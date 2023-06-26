@@ -35,11 +35,10 @@ module ShopifyAPI
       end
     end
 
-    def move(new_location_id:, fulfillment_order_line_items: nil)
+    def move(new_location_id:)
       body = {
         fulfillment_order: {
-          new_location_id: new_location_id,
-          fulfillment_order_line_items: fulfillment_order_line_items
+          new_location_id: new_location_id
         },
       }
       keyed_fulfillment_orders = keyed_fulfillment_orders_from_response(post(:move, {}, body.to_json))
